@@ -1,0 +1,17 @@
+# Maven
+**/target/
+**/*.class
+
+# Eclipse / STS workspace metadata
+.metadata/
+
+# IDE
+.settings/
+.classpath
+.project
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
