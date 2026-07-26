@@ -1,0 +1,25 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/notification_DB
+    username: postgres
+    password: admin1302
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: dispatcher-service-group
+      auto-offset-reset: earliest
+
+kafka:
+  topic:
+    notifications-validated: notifications.validated
+    notifications-email: notifications.email
+
+rate-limiter:
+  base-url: http://localhost:8083
