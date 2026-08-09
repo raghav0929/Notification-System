@@ -59,7 +59,11 @@ public class DispatcherService {
 
         // 3. Route to channel-specific topic
         String targetTopic = resolveTopic(channel);
-        kafkaTemplate.send(targetTopic, userId, rawPayload);
+        try {
+            kafkaTemplate.send(targetTopic, userId, rawPayload).get();
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to publish to " + targetTopic, e);
+        }
         log.info("Dispatched notification {} to topic {}", message.getNotificationId(), targetTopic);
     }
 
